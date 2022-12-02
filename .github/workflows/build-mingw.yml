@@ -42,7 +42,7 @@ jobs:
       - name: curl bazel
         shell: cmd
         run: |
-          curl https://github.com/bazelbuild/bazel/releases/download/3.7.2/bazel-3.7.2-windows-x86_64.exe -L --output bazel.exe &&^
+          curl https://github.com/bazelbuild/bazel/releases/download/3.7.2/bazel-3.7.2-windows-x86_64.exe -L --output bazel.exe
       
       - name: emscripten build
         shell: msys2 {0}
