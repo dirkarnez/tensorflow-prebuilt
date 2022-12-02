@@ -55,7 +55,7 @@ jobs:
             export PATH="$workspace/PortableGit-2.38.1-64-bit/bin:$PATH" && \
             export MSYS_NO_PATHCONV=1 && \
             export MSYS2_ARG_CONV_EXCL="*" && \
-            pacman -S patch unzip && \
+            pacman --noconfirm -S patch unzip && \
             python -m pip install numpy && \
             python ./configure.py && \
             bazel build -c opt --copt=/arch:AVX --announce_rc --config=opt --define=no_tensorflow_py_deps=true  //tensorflow/tools/lib_package:libtensorflow --verbose_failures
