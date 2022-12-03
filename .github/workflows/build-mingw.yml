@@ -44,15 +44,16 @@ jobs:
         run: |
           curl https://github.com/bazelbuild/bazel/releases/download/3.7.2/bazel-3.7.2-windows-x86_64.exe -L --output bazel.exe
       
-      - name: emscripten build
+      - name: MSVC build
         shell: msys2 {0}
         run: |
-            workspace=$(pwd) && \
+            export workspace=$(pwd) && \
             cp "$workspace/bazel.exe" /mingw64/bin/ && \
             cd "$workspace/tensorflow" && \
             export PATH="/mingw64/bin:/usr/local/bin:/usr/bin:/bin:/opt/bin:/c/Windows/System32:/c/Windows:/c/Windows/System32/WindowsPowerShell/v1.0/:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl" && \
             export PATH="$workspace/python-3.8.10-amd64-portable:$workspace/python-3.8.10-amd64-portable/Scripts:$PATH" && \
             export PATH="$workspace/PortableGit-2.38.1-64-bit/bin:$PATH" && \
+            export BAZEL_VC="/C/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Tools/MSVC/14.25.28610/bin/Hostx64/x64" && \
             export MSYS_NO_PATHCONV=1 && \
             export MSYS2_ARG_CONV_EXCL="*" && \
             pacman --noconfirm -S patch unzip && \
