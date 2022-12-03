@@ -44,6 +44,12 @@ jobs:
         run: |
           curl https://github.com/bazelbuild/bazel/releases/download/3.7.2/bazel-3.7.2-windows-x86_64.exe -L --output bazel.exe
       
+      - name: temp
+        shell: cmd
+        run: |
+          cd /d "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise" &&^
+          dir /s
+          
       - name: MSVC build
         shell: msys2 {0}
         run: |
