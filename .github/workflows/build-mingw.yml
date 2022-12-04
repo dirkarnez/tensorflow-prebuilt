@@ -67,7 +67,7 @@ jobs:
             pacman --noconfirm -S patch unzip && \
             python -m pip install numpy && \
             python ./configure.py && \
-            bazel build --config=release_cpu_windows --copt=/d2ReducedOptimizeHugeFunctions --host_copt=/d2ReducedOptimizeHugeFunctions -c opt --copt=/arch:AVX --define=no_tensorflow_py_deps=true //tensorflow/tools/lib_package:libtensorflow --verbose_failures
+            bazel build --config=release_cpu_windows --local_ram_resources=2048 --define=no_tensorflow_py_deps=true //tensorflow/tools/lib_package:libtensorflow --verbose_failures
             
       - name: Archive Release
         uses: thedoctor0/zip-release@master
